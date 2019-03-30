@@ -3,7 +3,8 @@ package me.codegc.apet.server.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import me.codegc.apet.server.model.JsonResult;
-import me.codegc.apet.server.model.WelcomeData;
+import me.codegc.apet.server.service.JingSanOpenService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,19 +21,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WelcomeAPI {
 
+    @Autowired
+    JingSanOpenService js;
+
     @ApiOperation("客户端启动页的API数据调用接口")
-    @GetMapping("/api")
+    @GetMapping("/welcome/api")
     public JsonResult welcome_api() {
 
-        WelcomeData welcomeData = new WelcomeData();
-        welcomeData.setIcon("./icon.png");
-        welcomeData.setContent("Welclome use this App.");
-        welcomeData.setMpegUrl("http://news.iciba.com/admin/tts/2019-03-19-day.mp3");
 
         return new JsonResult()
                 .init(JsonResult.SUCCESS)
                 .builder("message", "请求成功")
-                .builder("welcome", welcomeData);
+                .builder("welcome", js.JingSanOpenAPI());
     }
 
 
