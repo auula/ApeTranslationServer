@@ -21,7 +21,7 @@ public class JSOpenService {
 
     private final HttpClient HTTPCLIENT = new HttpClient().init(open_url);
 
-    public WelcomeData JingSanOpenAPI() {
+    public WelcomeData JinShanOpenAPI() {
         Map map = JSONObject.parseObject(HTTPCLIENT.get(), Map.class);
         WelcomeData welcomeData = new WelcomeData();
         welcomeData.setIcon("./icon.png");
