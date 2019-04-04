@@ -15,10 +15,9 @@ import java.util.Map;
  * <a href="https://github.com/JDode">to see GitHub</a>
  */
 @Component
-public class JingSanOpenService {
+public class JSOpenService {
 
     private final String open_url = "http://open.iciba.com/dsapi/";
-
 
     private final HttpClient HTTPCLIENT = new HttpClient().init(open_url);
 
