@@ -32,7 +32,7 @@ public class WelcomeAPI {
         return new JsonResult()
                 .init(JsonResult.SUCCESS)
                 .builder("message", "请求成功")
-                .builder("welcome", js.JingSanOpenAPI());
+                .builder("welcome", js.JinShanOpenAPI());
     }
 
 

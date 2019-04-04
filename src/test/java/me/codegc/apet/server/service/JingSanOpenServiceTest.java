@@ -7,6 +7,6 @@ public class JingSanOpenServiceTest {
     @Test
     public void jingSanOpenAPI() {
         JSOpenService js = new JSOpenService();
-        System.out.println(js.JingSanOpenAPI());
+        System.out.println(js.JinShanOpenAPI());
     }
 }
