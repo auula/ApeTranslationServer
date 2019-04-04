@@ -21,6 +21,7 @@ import java.io.IOException;
  */
 @RestController
 public class OCRAPI {
+
     //文件存储路径
     private final String FILEPATH = "/Users/jdode/Pictures";
 
@@ -30,18 +31,16 @@ public class OCRAPI {
 
 
     @ApiOperation(value = "OCR识别API接口",notes = "OCR目前仅支持中文或者英文内容图片识别")
-
     @PostMapping(value = "/ocr/api",headers = "content-type=multipart/form-data")
     public JsonResult OCR(@ApiParam(value="被识别图片文件",required=true)
                                       MultipartFile file) {
-        if (file.isEmpty()) {
+        if (file.isEmpty() || file == null) {
             return new JsonResult().init(JsonResult.ERROR).builder("message", "上传失败，请选择文件~");
         }
 
         String fileName = file.getOriginalFilename();
         File dest = new File(FILEPATH + fileName);
         try {
-
             file.transferTo(dest);
         } catch (IOException e) {
             return new JsonResult().init(JsonResult.ERROR).builder("error", "文件处理异常");

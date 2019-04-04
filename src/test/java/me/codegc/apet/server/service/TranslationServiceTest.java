@@ -23,4 +23,11 @@ public class TranslationServiceTest {
 
         System.out.println(s1);
     }
+
+
+    @Test
+    public void tts(){
+        byte[] bytes = new HttpClient().init("https://fanyi.baidu.com/gettts?lan=en&text=Hello!&spd=3&source=web").get().getBytes();
+
+    }
 }

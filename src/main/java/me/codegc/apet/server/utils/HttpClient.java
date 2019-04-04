@@ -25,6 +25,9 @@ public class HttpClient {
         return this;
     }
 
+
+
+
     public String get(){
         return HttpRequest.get(this.url).body();
     }

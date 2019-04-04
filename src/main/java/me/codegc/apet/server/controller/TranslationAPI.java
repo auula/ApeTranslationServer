@@ -64,4 +64,7 @@ public class TranslationAPI {
         return new JsonResult().init(JsonResult.ERROR).builder("message", "相关参数不能为空!");
     }
 
+
+
+
 }
