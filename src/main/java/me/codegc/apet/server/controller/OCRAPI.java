@@ -1,5 +1,6 @@
 package me.codegc.apet.server.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import me.codegc.apet.server.model.JsonResult;
@@ -19,6 +20,7 @@ import java.io.IOException;
  * <p>Ø
  * <a href="https://github.com/JDode">to see GitHub</a>
  */
+@Api(tags = "OCR图片提取文字API v1.3")
 @RestController
 public class OCRAPI {
 

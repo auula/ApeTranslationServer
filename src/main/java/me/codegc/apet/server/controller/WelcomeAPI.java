@@ -1,5 +1,6 @@
 package me.codegc.apet.server.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import me.codegc.apet.server.model.JsonResult;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  */
 @Slf4j
+@Api(tags = "Welcome页面欢迎API v1.5")
 @RestController
 public class WelcomeAPI {
 

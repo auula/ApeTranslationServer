@@ -1,5 +1,6 @@
 package me.codegc.apet.server.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +21,7 @@ import java.util.Map;
  * <p>
  * <a href="https://github.com/JDode">to see GitHub</a>
  */
+@Api(tags = "文字转语音mp3文件 API v1.8")
 @Controller
 public class AudioAPI {
 

@@ -25,7 +25,7 @@ public class AudioService {
 
     private final String TTSURL = "https://fanyi.baidu.com/gettts";
 
-    public void paly(Map<String,String> pram,HttpServletResponse response) throws IOException {
+    public void paly(Map<String, String> pram, HttpServletResponse response) throws IOException {
         StringBuffer sb = new StringBuffer();
         //开始遍历拼接URL
         sb.append(TTSURL).append("?");
@@ -34,8 +34,8 @@ public class AudioService {
             sb.append("&");
         }
         //https://fanyi.baidu.com/gettts?lan=en&text=spring!&spd=3&source=web
-        System.out.println(sb);
-        String file_name = System.currentTimeMillis()+ ".mp3";
+        //System.out.println(sb);
+        String file_name = System.currentTimeMillis() + ".mp3";
 
         response.setContentType("audio/mpeg");
         //response.addHeader("Content-Disposition", "attachment;filename=" + file_name);

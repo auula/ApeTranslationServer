@@ -1,5 +1,6 @@
 package me.codegc.apet.server.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import me.codegc.apet.server.model.JsonResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * <p>
  * <a href="https://github.com/JDode">to see GitHub</a>
  */
+@Api(tags = "Client检查更新API")
 @RestController
 public class UpdateAPI {
     @ApiOperation("client通过这个接口检查服务器版本")
