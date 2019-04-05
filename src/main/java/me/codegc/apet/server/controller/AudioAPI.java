@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * Created by Ding on 2019/4/4 4:08 PM.
  *
- * @Description: readme
+ * @Description: 文字转语音mp3文件API
  * <p>
  * <a href="https://github.com/JDode">to see GitHub</a>
  */
