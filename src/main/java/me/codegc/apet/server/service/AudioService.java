@@ -2,7 +2,6 @@ package me.codegc.apet.server.service;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletOutputStream;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.Map;
 
@@ -24,15 +22,11 @@ import java.util.Map;
 @Component
 public class AudioService {
 
-    @Autowired
-    HttpServletResponse response;
-
 
     private final String TTSURL = "https://fanyi.baidu.com/gettts";
 
-    public void paly(Map<String,String> pram) throws IOException {
-        //lan=en&text=spring!&spd=3&source=web
-        StringBuilder sb = new StringBuilder();
+    public void paly(Map<String,String> pram,HttpServletResponse response) throws IOException {
+        StringBuffer sb = new StringBuffer();
         //开始遍历拼接URL
         sb.append(TTSURL).append("?");
         for (Map.Entry<String, String> stringStringEntry : pram.entrySet()) {
@@ -45,23 +39,15 @@ public class AudioService {
 
         response.setContentType("audio/mpeg");
         //response.addHeader("Content-Disposition", "attachment;filename=" + file_name);
+        //通过Apache commons-io这个包导 读取网络文件
+        FileUtils.copyURLToFile(new URL(sb.toString()), new File(file_name));
 
-        FileUtils.copyURLToFile(new URL(TTSURL), new File(".", file_name));
-        // 8.创建一个文件输入流
-        InputStream is = new FileInputStream(new File(file_name));
-
-        // 9.获得输出流
-        ServletOutputStream os = response.getOutputStream();
-
-        byte[] b = new byte[1024];  //创建数据缓冲区
-        int length;
-
-        while ((length = is.read(b)) > 0) {
-            os.write(b, 0, length);
-        }
-
+        FileInputStream fileInputStream = new FileInputStream(new File(file_name));
+        ServletOutputStream outputStream = response.getOutputStream();
         // 10.流对拷
-        //IOUtils.copy(is, os);
-        IOUtils.closeQuietly(is, os);
+        IOUtils.copy(fileInputStream, outputStream);
+        //删除文件
+        FileUtils.forceDelete(new File(file_name));
+        IOUtils.closeQuietly(fileInputStream, outputStream);
     }
 }

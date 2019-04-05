@@ -1,5 +1,7 @@
 package me.codegc.apet.server.controller;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import me.codegc.apet.server.service.AudioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +23,24 @@ import java.util.Map;
 @Controller
 public class AudioAPI {
 
-    private final String TTSURL = "https://fanyi.baidu.com/gettts?lan=en&text=spring!&spd=3&source=web";
 
     @Autowired
     AudioService audioService;
 
 
     @ApiOperation(value = "文字转语音API接口",notes = "传入对应的文字即可转换成语音文件")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "languageCode", value = "被朗读的语言所在国的语言代码", required = true, dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "text",value = "被朗读的内容文本传入",required = true,dataType = "String",paramType = "query")
+    })
     @GetMapping("/audio")
-    public void audio_tts(String lan, String text , HttpServletResponse response) throws IOException {
+    public void audio_tts(String languageCode, String text , HttpServletResponse response) throws IOException {
         Map<String,String> pram = new HashMap();
         //https://fanyi.baidu.com/gettts?lan=en&text=spring!&spd=3&source=web
-        pram.put("lan","en");
-        pram.put("text","hello");
-        pram.put("spd","5");
+        pram.put("lan",languageCode);
+        pram.put("text",text.replaceAll(" ",""));
+        pram.put("spd","3");
         pram.put("source","web");
-        audioService.paly(pram);
+        audioService.paly(pram,response);
     }
 }
