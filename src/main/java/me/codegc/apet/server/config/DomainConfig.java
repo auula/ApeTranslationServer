@@ -25,6 +25,6 @@ public class DomainConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(domainInterceptor()).addPathPatterns("/**/from/**");
+        registry.addInterceptor(domainInterceptor()).addPathPatterns("/**");
     }
 }
