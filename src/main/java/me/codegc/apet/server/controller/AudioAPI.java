@@ -1,13 +1,16 @@
 package me.codegc.apet.server.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import me.codegc.apet.server.model.JsonResult;
 import me.codegc.apet.server.services.AudioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -36,12 +39,20 @@ public class AudioAPI {
             @ApiImplicitParam(name = "text",value = "被朗读的内容文本传入",required = true,dataType = "String",paramType = "query")
     })
     @GetMapping("/audio")
-    public void audio_tts(String languageCode, String text , HttpServletResponse response) throws IOException {
+    public void audio_tts(
+            @RequestParam(value="languageCode",required = true ,defaultValue = "zh") String languageCode,
+            @RequestParam(value = "text",required = true,defaultValue = "相关参数不能为空！！") String text,
+            HttpServletResponse response) throws IOException {
+
+//        if (languageCode.isEmpty() || text.isEmpty()) {
+//            response.getWriter().println(JSONObject.toJSON(new JsonResult().init(JsonResult.ERROR).builder("message", "相关参数不能为空！")));
+//        }
+
         Map<String,String> pram = new HashMap();
         //https://fanyi.baidu.com/gettts?lan=en&text=spring!&spd=3&source=web
         pram.put("lan",languageCode);
         pram.put("text",text.replaceAll(" ",""));
-        pram.put("spd","3");
+        pram.put("spd","5");
         pram.put("source","web");
         audioService.paly(pram,response);
     }
