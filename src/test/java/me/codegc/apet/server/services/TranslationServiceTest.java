@@ -1,4 +1,4 @@
-package me.codegc.apet.server.service;
+package me.codegc.apet.server.services;
 
 import com.alibaba.fastjson.JSONObject;
 import me.codegc.apet.server.utils.HttpClient;
@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 public class TranslationServiceTest {
 

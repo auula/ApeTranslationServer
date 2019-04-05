@@ -1,4 +1,4 @@
-package me.codegc.apet.server.service;
+package me.codegc.apet.server.services;
 
 import com.github.JDode.JTesseract.JTesseract;
 import com.github.JDode.JTesseract.model.Tesseract;

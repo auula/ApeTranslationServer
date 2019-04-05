@@ -1,4 +1,4 @@
-package me.codegc.apet.server.service;
+package me.codegc.apet.server.services;
 
 import com.alibaba.fastjson.JSONObject;
 import me.codegc.apet.server.model.WelcomeData;

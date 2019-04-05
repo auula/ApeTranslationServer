@@ -1,4 +1,4 @@
-package me.codegc.apet.server.service;
+package me.codegc.apet.server.services;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;

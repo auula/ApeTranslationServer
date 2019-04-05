@@ -1,4 +1,4 @@
-package me.codegc.apet.server.service;
+package me.codegc.apet.server.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;

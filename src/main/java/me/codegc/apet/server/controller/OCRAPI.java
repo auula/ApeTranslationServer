@@ -3,7 +3,7 @@ package me.codegc.apet.server.controller;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import me.codegc.apet.server.model.JsonResult;
-import me.codegc.apet.server.service.OCRService;
+import me.codegc.apet.server.services.OCRService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;

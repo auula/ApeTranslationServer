@@ -3,7 +3,7 @@ package me.codegc.apet.server.controller;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import me.codegc.apet.server.model.JsonResult;
-import me.codegc.apet.server.service.JSOpenService;
+import me.codegc.apet.server.services.JSOpenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
