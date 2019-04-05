@@ -43,9 +43,10 @@ public class AudioService {
         FileUtils.copyURLToFile(new URL(sb.toString()), new File(file_name));
 
         FileInputStream fileInputStream = new FileInputStream(new File(file_name));
+
         ServletOutputStream outputStream = response.getOutputStream();
         // 10.流对拷
-        IOUtils.copy(fileInputStream, outputStream);
+        IOUtils.copy(fileInputStream, outputStream,2048);
         //删除文件
         FileUtils.forceDelete(new File(file_name));
         IOUtils.closeQuietly(fileInputStream, outputStream);
