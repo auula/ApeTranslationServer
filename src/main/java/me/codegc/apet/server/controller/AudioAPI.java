@@ -47,6 +47,7 @@ public class AudioAPI {
             HttpServletResponse response) throws IOException {
 
         if (languageCode.isEmpty() || text.isEmpty()) {
+            response.setStatus(500);
             response.setHeader("Content-type", "text/json;charset=UTF-8");
             response.setCharacterEncoding("utf-8");
             response.getWriter().println(JSONObject.toJSON(new JsonResult().init(JsonResult.ERROR).builder("message", "相关参数不能为空！")));
