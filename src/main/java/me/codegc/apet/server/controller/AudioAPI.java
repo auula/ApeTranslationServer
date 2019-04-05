@@ -10,6 +10,7 @@ import me.codegc.apet.server.services.AudioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +27,7 @@ import java.util.Map;
  */
 @Api(tags = "文字转语音mp3文件 API v1.8")
 @Controller
+@RequestMapping("/mp3")
 public class AudioAPI {
 
 
@@ -40,13 +42,16 @@ public class AudioAPI {
     })
     @GetMapping("/audio")
     public void audio_tts(
-            @RequestParam(value="languageCode",required = true ,defaultValue = "zh") String languageCode,
-            @RequestParam(value = "text",required = true,defaultValue = "相关参数不能为空！！") String text,
+            @RequestParam(value="languageCode",required = true ,defaultValue = "") String languageCode,
+            @RequestParam(value = "text",required = true,defaultValue = "") String text,
             HttpServletResponse response) throws IOException {
 
-//        if (languageCode.isEmpty() || text.isEmpty()) {
-//            response.getWriter().println(JSONObject.toJSON(new JsonResult().init(JsonResult.ERROR).builder("message", "相关参数不能为空！")));
-//        }
+        if (languageCode.isEmpty() || text.isEmpty()) {
+            response.setHeader("Content-type", "text/json;charset=UTF-8");
+            response.setCharacterEncoding("utf-8");
+            response.getWriter().println(JSONObject.toJSON(new JsonResult().init(JsonResult.ERROR).builder("message", "相关参数不能为空！")));
+            return;
+        }
 
         Map<String,String> pram = new HashMap();
         //https://fanyi.baidu.com/gettts?lan=en&text=spring!&spd=3&source=web
