@@ -7,6 +7,7 @@ import me.codegc.apet.server.model.JsonResult;
 import me.codegc.apet.server.services.OCRService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +23,7 @@ import java.io.IOException;
  */
 @Api(tags = "OCR图片提取文字API v1.3")
 @RestController
+@RequestMapping("/ocr")
 public class OCRAPI {
 
     //文件存储路径
@@ -33,7 +35,7 @@ public class OCRAPI {
 
 
     @ApiOperation(value = "OCR识别API接口",notes = "OCR目前仅支持中文或者英文内容图片识别")
-    @PostMapping(value = "/ocr/api",headers = "content-type=multipart/form-data")
+    @PostMapping(value = "/api",headers = "content-type=multipart/form-data")
     public JsonResult OCR(@ApiParam(value="被识别图片文件",required=true)
                                       MultipartFile file) {
         if (file.isEmpty() || file == null) {
