@@ -65,6 +65,12 @@
             <artifactId>commons-io</artifactId>
             <version>2.5</version>
         </dependency>
+        <!-- 添加自己本地库的JTesseract 方便Maven打包项目-->
+        <dependency>
+            <groupId>com.github.JDode.JTesseract</groupId>
+            <artifactId>JTesseract</artifactId>
+            <version>1.8-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
