@@ -24,11 +24,12 @@ import java.util.Set;
 @Slf4j
 public class DomainInterceptor implements HandlerInterceptor {
 
-    // 允许跨域请求 这里可以放入你的域名
+    // 允许跨域请求 这里可以放入你的域名 这里给你后期可以从数据库里拿
     private static String[] allowDomain = {"http://localhost:8080","*",null};
 
     private static Set<String> allowedOrigins = new HashSet<String>(Arrays.asList(allowDomain));
 
+    //配置域名拦截器 防止不在第三方跨域请求
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -43,16 +44,18 @@ public class DomainInterceptor implements HandlerInterceptor {
         response.setHeader("Content-type", "text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().println(JSONObject.toJSON(new JsonResult().init(JsonResult.ERROR).builder("message ","你的域名没有在白名单里!请求被拒绝!")));
+        log.info("This domain name is not on the white list .{}",request.changeSessionId());
         return false;
     }
 
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+//    @Override
+//    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+//
+//    }
+//
+//    @Override
+//    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+//
+//    }
 
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-
-    }
 }
