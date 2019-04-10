@@ -41,7 +41,7 @@ public class DomainInterceptor implements HandlerInterceptor {
             response.setHeader("Access-Control-Allow-Credentials", "true");
             return  true;
         }
-        response.setHeader("Content-type", "text/html;charset=UTF-8");
+        response.setHeader("Content-type", "text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().println(JSONObject.toJSON(new JsonResult().init(JsonResult.ERROR).builder("message ","你的域名没有在白名单里!请求被拒绝!")));
         log.info("This domain name is not on the white list .{}",request.changeSessionId());
