@@ -33,11 +33,10 @@ public class OCRAPI {
     OCRService ocrService;
 
 
-
-    @ApiOperation(value = "OCR识别API接口",notes = "OCR目前仅支持中文或者英文内容图片识别")
-    @PostMapping(value = "/api",headers = "content-type=multipart/form-data")
-    public JsonResult OCR(@ApiParam(value="被识别图片文件",required=true)
-                                      MultipartFile file) {
+    @ApiOperation(value = "OCR识别API接口", notes = "OCR目前仅支持中文或者英文内容图片识别")
+    @PostMapping(value = "/api", headers = "content-type=multipart/form-data")
+    public JsonResult OCR(@ApiParam(value = "被识别图片文件", required = true)
+                                  MultipartFile file) {
         if (file.isEmpty() || file == null) {
             return new JsonResult().init(JsonResult.ERROR).builder("message", "上传失败，请选择文件~");
         }

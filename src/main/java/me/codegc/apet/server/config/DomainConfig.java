@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class DomainConfig implements WebMvcConfigurer {
 
     @Bean
-    public DomainInterceptor domainInterceptor(){
+    public DomainInterceptor domainInterceptor() {
         return new DomainInterceptor();
     }
 
