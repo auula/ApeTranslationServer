@@ -11,9 +11,8 @@ import java.util.Date;
 public class ApetApplication {
 
     public static void main(String[] args) {
-        log.info("{} => 程序正在启动",new Date());
+        log.info("{} >>>> 程序正在启动",new Date());
         SpringApplication.run(ApetApplication.class, args);
-
     }
 
 }
