@@ -4,10 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 @Slf4j
@@ -18,9 +14,7 @@ public class ApetApplication {
     public static void main(String[] args) {
         log.info("{} >>>> 程序正在启动", new Date());
         SpringApplication.run(ApetApplication.class, args);
-
     }
-
 
 
 }
